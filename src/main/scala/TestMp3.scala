@@ -1,17 +1,18 @@
 package foo
 
-import com.alvinalexander.sound.SoundFilePlayer
+import com.alvinalexander.sound._
 import javazoom.jlgui.basicplayer._
 import scala.collection.JavaConversions._
 // this was necessary to get past compiler problems
 import java.util.Map
 
-object Test extends App {
+object TestMp3 extends App {
   
   // the listener only works for mp3 files
   val testClip = "/Users/al/Sarah/plugins/DDRandomNoise/Sounds/yoda-help_you_i_can.mp3" 
   val bpl = new MyListener
-  val playa = new SoundFilePlayer(testClip)
+  //val playa = new SoundFilePlayer(testClip)
+  val playa = SoundFilePlayer.getSoundFilePlayer(testClip).asInstanceOf[Mp3SoundFilePlayer]
   playa.getBasicPlayer.addBasicPlayerListener(bpl)
   
   try {
